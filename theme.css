@@ -1,0 +1,43 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: sans-serif;
+  position: relative;
+}
+
+/* Force absolute position dead center */
+#ssn-fix-wrapper {
+  position: absolute;
+  top: 10%; /* Adjust if you want lower/higher */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  max-width: 40ch;
+  padding: 16px 24px;
+  border-radius: 12px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chat-username {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.chat-text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
