@@ -1,10 +1,15 @@
 console.log('🛠 theme.js loaded');
 
 (function(){
-  const params   = new URLSearchParams(location.search);
-  const session  = params.get('session');
-  const socketUrl = `wss://ssn.socialstream.ninja/stream/${session}`;
+  const params  = new URLSearchParams(location.search);
+  const session = params.get('session');
+  if (!session) {
+    console.error('❌ Missing ?session= in URL');
+    return;
+  }
 
+  // correct host + join path
+  const socketUrl = `wss://io.socialstream.ninja/join/${session}/1/1`;
   console.log('⬢ Connecting to', socketUrl);
 
   const socket = new WebSocket(socketUrl);
@@ -19,12 +24,19 @@ console.log('🛠 theme.js loaded');
 
   socket.addEventListener('message', event => {
     console.log('🔔 Received raw:', event.data);
-    const msg = JSON.parse(event.data);
+    let msg;
+    try {
+      msg = JSON.parse(event.data);
+    } catch {
+      console.error('❌ Invalid JSON', event.data);
+      return;
+    }
     renderMessage(msg);
   });
 
   function renderMessage(msg) {
     const container = document.getElementById('chat-container');
+    if (!container) return console.error('❌ No #chat-container');
     const div = document.createElement('div');
     div.className   = 'chat-message';
     div.textContent = `${msg.username}: ${msg.text}`;
