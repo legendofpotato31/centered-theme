@@ -1,17 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Custom Chat Theme</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <title>Centered Chat Overlay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="theme.css">
 </head>
-<body>
-  <div class="chat-message">
-    <span class="username">{{username}}</span>
-    <span class="message">{{message}}</span>
-  </div>
-
-  <script src="script.js"></script>
+<body style="margin:0; padding:0; background:transparent; overflow:hidden;">
+  <div id="chat-container"></div>
+  <script src="theme.js"></script>
 </body>
 </html>
