@@ -1,0 +1,37 @@
+/* full‑screen transparent background */
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+/* container holds all messages */
+#chat-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-height: 80%;
+  display: flex;
+  flex-direction: column-reverse; /* newest at bottom */
+  overflow-y: auto;
+  pointer-events: none;           /* clicks pass through */
+}
+
+/* each message bubble */
+.chat-message {
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 4px;
+  font-size: 1em;
+  line-height: 1.2;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* fade‑in keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
